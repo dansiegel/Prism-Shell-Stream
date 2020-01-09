@@ -52,8 +52,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
-    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
+    <PackageReference ExcludeAssets="All"  Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -107,6 +106,25 @@
       <Project>{5767A715-87A6-4303-9D79-D9E43EAF262E}</Project>
       <Name>PrismSample</Name>
     </ProjectReference>
+
+    <ProjectReference Include="..\..\Xamarin.Forms\Stubs\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android %28Forwarders%29.csproj">
+      <Name>Xamarin.Forms.Platform.Android %28Forwarders%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Platform.Android.FormsViewGroup\Xamarin.Forms.Platform.Android.FormsViewGroup.csproj">
+      <Name>Xamarin.Forms.Platform.Android.FormsViewGroup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android.csproj">
+      <Name>Xamarin.Forms.Platform.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
+      <Name>Xamarin.Forms.Core</Name>
+    </ProjectReference>
+
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" >
+      <Name>Xamarin.Forms.Xaml</Name>
+    </ProjectReference>
+    
+    
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />
