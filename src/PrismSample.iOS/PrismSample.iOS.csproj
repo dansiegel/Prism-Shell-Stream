@@ -48,6 +48,8 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -110,11 +112,21 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\Contents.json" />
-    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\prism-logo%401x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\prism-logo%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\prism-logo%403x.png" />
+    <ImageAsset Include="Resources\Media.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\prism-logo%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\prism-logo%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\PrismLogo.imageset\prism-logo%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -125,19 +137,26 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.DryIoc.Forms">
-      <Version>7.2.0.1422</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj">
+      <Project>{45254720-ea53-452c-b683-7b8366f1197b}</Project>
+      <Name>Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj">
+      <Project>{29b32f3e-d464-48b2-ba3b-aede6c7e5b04}</Project>
+      <Name>Prism.DryIoc.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj">
+      <Project>{af24cbdd-912c-4c54-a91a-07c40fa0b6d3}</Project>
+      <Name>Prism.Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrismSample\PrismSample.csproj">
       <Project>{5767A715-87A6-4303-9D79-D9E43EAF262E}</Project>
       <Name>PrismSample</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Media.xcassets\PrismLogo.imageset\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

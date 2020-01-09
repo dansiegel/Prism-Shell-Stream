@@ -52,10 +52,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.DryIoc.Forms">
-      <Version>7.2.0.1422</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +91,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj">
+      <Project>{45254720-ea53-452c-b683-7b8366f1197b}</Project>
+      <Name>Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj">
+      <Project>{29b32f3e-d464-48b2-ba3b-aede6c7e5b04}</Project>
+      <Name>Prism.DryIoc.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj">
+      <Project>{af24cbdd-912c-4c54-a91a-07c40fa0b6d3}</Project>
+      <Name>Prism.Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrismSample\PrismSample.csproj">
       <Project>{5767A715-87A6-4303-9D79-D9E43EAF262E}</Project>
       <Name>PrismSample</Name>

@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj" />
+    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
+    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj" />
   </ItemGroup>
 </Project>
