@@ -1,0 +1,4 @@
+[submodule "Prism"]
+	path = Prism
+	url = https://github.com/PrismLibrary/Prism.git
+	branch = shell
