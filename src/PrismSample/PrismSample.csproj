@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <XFDisableTargetsValidation>True</XFDisableTargetsValidation>
   </PropertyGroup>
 
+  <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.props" />
+  <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.targets" />
   <ItemGroup>
     <PackageReference ExcludeAssets="All" Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
@@ -13,10 +15,10 @@
     <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj" />
     <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
     <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj" />
-    <ProjectReference ReferenceOutputAssembly="False" Include="..\..\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
-    <ProjectReference Include="..\..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
-    <ProjectReference Include="..\..\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />    
-    <ProjectReference Include="..\..\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
+    <ProjectReference ReferenceOutputAssembly="False" Include="..\..\Xamarin.Forms\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />    
+    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,11 +35,11 @@
 
   <Target Name="EnsureBuildTasks" BeforeTargets="BeforeCompile" >
     <Message Text="EnsureBuildTasks is running" />
-    <MSBuild Projects="..\..\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj"
+    <MSBuild Projects="..\..\Xamarin.Forms\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj"
       Properties="Configuration=$(Configuration)"/>
   </Target>
 
-  <Import Project="..\..\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
-  <Import Project="..\..\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
+  <Import Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
+  <Import Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
 
 </Project>

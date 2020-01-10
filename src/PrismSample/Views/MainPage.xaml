@@ -9,8 +9,8 @@
 
     <TabBar>
         <Tab>
-            <ShellContent Route="HomePage">                
+            <ShellContent Route="HomePage">
             </ShellContent>
-        </Tab>    
+        </Tab>
     </TabBar>
 </Shell>

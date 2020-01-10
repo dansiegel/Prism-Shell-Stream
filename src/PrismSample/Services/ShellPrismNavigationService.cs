@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using Prism.Common;
 
 namespace PrismSample.Services
 {
@@ -10,6 +12,11 @@ namespace PrismSample.Services
         ShellNavigationService,
         INavigationService
     {
+        public override Page Create(ShellContentCreateArgs args)
+        {
+            return base.Create(args);
+        }
+
         Task<INavigationResult> INavigationService.GoBackAsync()
         {
             throw new NotImplementedException();
@@ -20,24 +27,33 @@ namespace PrismSample.Services
             throw new NotImplementedException();
         }
 
-        Task<INavigationResult> INavigationService.NavigateAsync(Uri uri)
-        {
-            throw new NotImplementedException();
+        Task<INavigationResult> INavigationService.NavigateAsync(Uri uri){
+            return ((INavigationService)this).NavigateAsync(uri, null);
         }
 
-        Task<INavigationResult> INavigationService.NavigateAsync(Uri uri, INavigationParameters parameters)
+        async Task<INavigationResult> INavigationService.NavigateAsync(Uri uri, INavigationParameters parameters)
         {
-            throw new NotImplementedException();
+            await  Shell.Current.GoToAsync(uri);
+            return new NavigationResult()
+            {
+                Success = true
+            };
+        }
+
+        
+        public override Task<ShellRouteState> ParseAsync(ShellUriParserArgs args)
+        {
+            return base.ParseAsync(args);
         }
 
         Task<INavigationResult> INavigationService.NavigateAsync(string name)
         {
-            throw new NotImplementedException();
+            return ((INavigationService)this).NavigateAsync(name, null);
         }
 
         Task<INavigationResult> INavigationService.NavigateAsync(string name, INavigationParameters parameters)
         {
-            throw new NotImplementedException();
+            return ((INavigationService)this).NavigateAsync(UriParsingHelper.Parse(name), parameters);
         }
     }
 }

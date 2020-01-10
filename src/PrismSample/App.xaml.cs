@@ -18,6 +18,9 @@ namespace PrismSample
         {
             InitializeComponent();
 
+            var shell = new MainPage();
+            shell.SetNavigationService(Container.Resolve<INavigationService>());
+            MainPage = shell;
             var result = await NavigationService.NavigateAsync("HomePage");
 
             if(!result.Success)
@@ -28,7 +31,7 @@ namespace PrismSample
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<INavigationService, ShellPrismNavigationService>();
+            containerRegistry.RegisterSingleton<INavigationService, ShellPrismNavigationService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             // containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
