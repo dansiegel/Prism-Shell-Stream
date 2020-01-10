@@ -12,6 +12,10 @@ namespace PrismSample.Services
         ShellNavigationService,
         INavigationService
     {
+        public ShellPrismNavigationService()
+        {
+        }
+
         public override Page Create(ShellContentCreateArgs args)
         {
             return base.Create(args);

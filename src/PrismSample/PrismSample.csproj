@@ -7,14 +7,12 @@
 
   <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.props" />
   <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.targets" />
-  <ItemGroup>
-    <PackageReference ExcludeAssets="All" Include="Xamarin.Forms" Version="4.4.0.991265" />
-  </ItemGroup>
+ 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj" />
-    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
-    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj" />
+    <ProjectReference ExcludeAssets="All"  Include="..\..\Prism\Source\Prism\Prism.csproj" />
+    <ProjectReference ExcludeAssets="All"  Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
+    <ProjectReference ExcludeAssets="All" Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj" />
     <ProjectReference ReferenceOutputAssembly="False" Include="..\..\Xamarin.Forms\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
     <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
     <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />    
@@ -42,4 +40,4 @@
   <Import Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
   <Import Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
 
-</Project>
+</Project> 

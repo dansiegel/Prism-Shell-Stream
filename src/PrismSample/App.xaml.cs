@@ -16,16 +16,25 @@ namespace PrismSample
 
         protected override async void OnInitialized()
         {
-            InitializeComponent();
-
-            var shell = new MainPage();
-            shell.SetNavigationService(Container.Resolve<INavigationService>());
-            MainPage = shell;
-            var result = await NavigationService.NavigateAsync("HomePage");
-
-            if(!result.Success)
+            try
             {
-                System.Diagnostics.Debugger.Break();
+                InitializeComponent();
+
+                var shell = new MainPage();
+                var navigationService = Container.Resolve<INavigationService>();
+
+                shell.SetNavigationService(navigationService);
+                MainPage = shell;
+                var result = await NavigationService.NavigateAsync("HomePage");
+
+                if (!result.Success)
+                {
+                    System.Diagnostics.Debugger.Break();
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
 
