@@ -1,5 +1,7 @@
 ﻿using System;
 using Prism.Ioc;
+using Prism.Navigation;
+using PrismSample.Services;
 using PrismSample.ViewModels;
 using PrismSample.Views;
 using Xamarin.Forms;
@@ -16,7 +18,7 @@ namespace PrismSample
         {
             InitializeComponent();
 
-            var result = await NavigationService.NavigateAsync("MainPage");
+            var result = await NavigationService.NavigateAsync("HomePage");
 
             if(!result.Success)
             {
@@ -26,8 +28,10 @@ namespace PrismSample
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<INavigationService, ShellPrismNavigationService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            // containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
         }
     }
 }

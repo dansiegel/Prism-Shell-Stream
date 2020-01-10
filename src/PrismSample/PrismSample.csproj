@@ -6,12 +6,38 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+    <PackageReference ExcludeAssets="All" Include="Xamarin.Forms" Version="4.4.0.991265" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj" />
     <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
     <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj" />
+    <ProjectReference ReferenceOutputAssembly="False" Include="..\..\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
+    <ProjectReference Include="..\..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
+    <ProjectReference Include="..\..\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />    
+    <ProjectReference Include="..\..\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <Target Name="EnsureBuildTasks" BeforeTargets="BeforeCompile" >
+    <Message Text="EnsureBuildTasks is running" />
+    <MSBuild Projects="..\..\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj"
+      Properties="Configuration=$(Configuration)"/>
+  </Target>
+
+  <Import Project="..\..\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
+  <Import Project="..\..\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
+
 </Project>
