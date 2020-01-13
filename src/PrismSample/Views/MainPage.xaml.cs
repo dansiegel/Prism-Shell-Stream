@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Prism.Navigation;
+using System.ComponentModel;
 
 namespace PrismSample.Views
 {
@@ -7,11 +8,10 @@ namespace PrismSample.Views
     [DesignTimeVisible(false)]
     public partial class MainPage
     {
-        public MainPage()
+        public MainPage(INavigationService navigationService)
         {
+            SetNavigationService(navigationService);
             InitializeComponent();
         }
-
-        
     }
 }

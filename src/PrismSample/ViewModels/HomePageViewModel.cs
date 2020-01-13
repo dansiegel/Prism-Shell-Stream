@@ -8,6 +8,9 @@ namespace PrismSample.ViewModels
 {
     public class HomePageViewModel : BindableBase, IInitialize, INavigationAware
     {
+
+        public string LabelText => "Hello from Prism";
+
         private bool _initialized;
         public bool Initialized
         {

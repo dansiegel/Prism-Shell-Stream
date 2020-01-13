@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <XFDisableTargetsValidation>True</XFDisableTargetsValidation>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.props" />

@@ -19,11 +19,7 @@ namespace PrismSample
             try
             {
                 InitializeComponent();
-
-                var shell = new MainPage();
-                var navigationService = Container.Resolve<INavigationService>();
-
-                shell.SetNavigationService(navigationService);
+                var shell = Container.Resolve<MainPage>();
                 MainPage = shell;
                 var result = await NavigationService.NavigateAsync("HomePage");
 
