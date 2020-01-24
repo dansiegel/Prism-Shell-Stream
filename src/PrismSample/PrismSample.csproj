@@ -6,20 +6,6 @@
     <DebugType>portable</DebugType>
   </PropertyGroup>
 
-  <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.props" />
-  <Import  Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.DefaultItems.targets" />
- 
-
-  <ItemGroup>
-    <ProjectReference ExcludeAssets="All"  Include="..\..\Prism\Source\Prism\Prism.csproj" />
-    <ProjectReference ExcludeAssets="All"  Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
-    <ProjectReference ExcludeAssets="All" Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj" />
-    <ProjectReference ReferenceOutputAssembly="False" Include="..\..\Xamarin.Forms\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
-    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
-    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />    
-    <ProjectReference Include="..\..\Xamarin.Forms\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -32,13 +18,19 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference ReferenceOutputAssembly="False" Include="$(XFRootCodePath)\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
+    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />
+  </ItemGroup>
+
   <Target Name="EnsureBuildTasks" BeforeTargets="BeforeCompile" >
     <Message Text="EnsureBuildTasks is running" />
-    <MSBuild Projects="..\..\Xamarin.Forms\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj"
+    <MSBuild Projects="$(XFRootCodePath)\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj"
       Properties="Configuration=$(Configuration)"/>
   </Target>
 
-  <Import Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
-  <Import Project="..\..\Xamarin.Forms\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
+  <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
+  <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
 
-</Project> 
+
+</Project>

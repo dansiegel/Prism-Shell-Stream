@@ -141,15 +141,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\Prism\Source\Prism\Prism.csproj">
+    <ProjectReference Include="$(PrismRootCodePath)\Prism\Prism.csproj">
       <Project>{45254720-ea53-452c-b683-7b8366f1197b}</Project>
       <Name>Prism</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj">
+    <ProjectReference Include="$(PrismRootCodePath)\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj">
       <Project>{29b32f3e-d464-48b2-ba3b-aede6c7e5b04}</Project>
       <Name>Prism.DryIoc.Forms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Prism\Source\Xamarin\Prism.Forms\Prism.Forms.csproj">
+    <ProjectReference Include="$(PrismRootCodePath)\Xamarin\Prism.Forms\Prism.Forms.csproj">
       <Project>{af24cbdd-912c-4c54-a91a-07c40fa0b6d3}</Project>
       <Name>Prism.Forms</Name>
     </ProjectReference>

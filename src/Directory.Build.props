@@ -1,0 +1,16 @@
+<Project>
+  <Import Project="..\BuildFromSource.props" />
+
+  <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.DefaultItems.props" />
+  <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.DefaultItems.targets" />
+
+  <ItemGroup>
+    <ProjectReference ExcludeAssets="All"  Include="$(PrismRootCodePath)\Prism\Prism.csproj" />
+    <ProjectReference ExcludeAssets="All"  Include="$(PrismRootCodePath)\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
+    <ProjectReference ExcludeAssets="All" Include="$(PrismRootCodePath)\Xamarin\Prism.Forms\Prism.Forms.csproj" />
+    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
+    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
+  </ItemGroup>
+
+
+</Project>
