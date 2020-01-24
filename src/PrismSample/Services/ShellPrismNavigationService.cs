@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Prism.Common;
 using Prism.Ioc;
 using Prism.Behaviors;
+using System.Linq;
 
 namespace PrismSample.Services
 {
@@ -25,6 +26,8 @@ namespace PrismSample.Services
             _pageBehaviorFactory = pageBehaviorFactory;
         }
 
+               
+
         public override async Task<ShellRouteState> NavigatingToAsync(ShellNavigationArgs args)
         {
             var pathPart = args.FutureState.CurrentRoute.GetCurrent();
@@ -34,7 +37,7 @@ namespace PrismSample.Services
                 var page = CreatePageFromSegment(shellContent.Route);
                 shellContent.Content = page;
                 await PageUtilities.OnInitializedAsync(page,
-                    new NavigationParameters()
+                   _currentParameters
                     );
             }
 
@@ -110,6 +113,7 @@ namespace PrismSample.Services
             return ((INavigationService)this).NavigateAsync(uri, null);
         }
 
+
         async Task<INavigationResult> INavigationService.NavigateAsync(Uri uri, INavigationParameters parameters)
         {
             await  Shell.Current.GoToAsync(uri);
@@ -119,11 +123,140 @@ namespace PrismSample.Services
             };
         }
 
-        
+        public override void ApplyParameters(ShellLifecycleArgs args)
+        {
+            base.ApplyParameters(args);
+
+            var element = args.Element;
+            var prismParameters = _currentParameters;
+            string fullSegmentPath = args.PathPart.NavigationParameters["foo"];
+            var navigationParameters = UriParsingHelper.GetSegmentParameters(fullSegmentPath, _currentParameters);
+
+            PageUtilities.OnInitializedAsync(element, navigationParameters);
+
+            if (element is ShellContent content && content.Content != null)
+                PageUtilities.OnInitializedAsync(content.Content, navigationParameters);
+        }
+
+        internal const string RemovePageRelativePath = "../";
+        private INavigationParameters _currentParameters;
+        private Dictionary<PathPart, INavigationParameters> _generateCurrentNavigationParameters;
+
+        // First... validates URI
         public override Task<ShellRouteState> ParseAsync(ShellUriParserArgs args)
         {
-            return base.ParseAsync(args);
+            ShellRouteState newState = args.Shell.RouteState;
+
+            //var newState = RebuildCurrentState(args.Shell.CurrentState.Location, args.Shell.Items);
+            //var currentUri = args.Shell.CurrentState.Location;
+            var navigationSegments = UriParsingHelper.GetUriSegments(args.Uri);
+            navigationSegments.ToList().ForEach(x =>
+            {
+                var segmentName = UriParsingHelper.GetSegmentName(x);
+
+                // ../ViewA
+                if (segmentName == RemovePageRelativePath && newState.CurrentRoute.PathParts.Count >= 3)
+                {
+                    var currentRoutes = newState.CurrentRoute.PathParts.ToList();
+                    currentRoutes.RemoveAt(newState.CurrentRoute.PathParts.Count - 1);
+                    newState.CurrentRoute.PathParts = currentRoutes;
+                    //return null;
+                }
+                else
+                {
+                    //ViewA?id=5&grapes=purple/ViewB?id=3
+                    //ViewA?id=5&id=4&id=2&id=1&grapes=purple
+
+                    var segmentParts = segmentName.Split('?');
+                    var navigationParameters = UriParsingHelper.GetSegmentParameters(x, _currentParameters);
+                    var shellItem = GetShellItem(args.Shell.Items, segmentName);
+                    //return new PrismPathPart(shellItem, segmentName, navigationParameters);
+                    newState.Add(new PathPart(shellItem, new Dictionary<string, string> { { "foo", x } }));
+                }
+            });
+
+           // newState.Add(newPathParts.Where(x => x != null && x.ShellPart != null).ToList());
+
+           // var routePath = new RoutePath(newState, null);
+           // var routeState = new ShellRouteState(routePath);
+            // Home/Demo
+
+            // Routing.ImplicitPrefix = "IMPL_";
+            //var item = args.Shell.Items.First(x => x.Route.StartsWith("IMPL_"));
+
+            return Task.FromResult(newState);
         }
+
+        private static List<PathPart> RebuildCurrentState(Uri uri, IList<ShellItem> shellItems)
+        {
+            var pathParts = new List<PathPart>();
+            // TODO
+
+            return pathParts;
+        }
+
+        private static BaseShellItem GetShellItem(IList<ShellItem> items, string name)
+        {
+            var shellItem = items.FirstOrDefault(x => !IsImplicitRoute(x) && UriParsingHelper.GetSegmentName(x.Route) == name);
+            if (shellItem != null)
+                return shellItem;
+
+            var implicitItems = items.Where(x => IsImplicitRoute(x));
+            foreach (var implicitItem in implicitItems)
+            {
+                var item = GetShellItem(implicitItem.Items, name);
+                if (item != null)
+                    return item;
+            }
+
+            return null;
+        }
+
+        private static BaseShellItem GetShellItem(IList<ShellSection> items, string name)
+        {
+            var shellItem = items.FirstOrDefault(x => !IsImplicitRoute(x) && UriParsingHelper.GetSegmentName(x.Route) == name);
+            if (shellItem != null)
+                return shellItem;
+
+            var implicitItems = items.Where(x => IsImplicitRoute(x));
+            foreach (var implicitItem in implicitItems)
+            {
+                var item = GetShellItem(implicitItem.Items, name);
+                if (item != null)
+                    return item;
+            }
+
+            return null;
+        }
+
+        private static BaseShellItem GetShellItem(IList<ShellContent> items, string name)
+        {
+            var shellItem = items.FirstOrDefault(x => !IsImplicitRoute(x) && UriParsingHelper.GetSegmentName(x.Route) == name);
+            if (shellItem != null)
+                return shellItem;
+
+            return null;
+        }
+
+        private static bool IsImplicitRoute(BaseShellItem item) =>
+            item.Route.StartsWith("IMPL_");
+
+        //private class PrismPathPart : PathPart
+        //{
+        //    public PrismPathPart(BaseShellItem baseShellItem, string path, INavigationParameters parameters)
+        //        : base(baseShellItem, null)
+        //    {
+        //        NavigationParameters = parameters;
+                
+        //        //"page?id=4"
+        //        //Path == page
+        //        Path = path;
+        //    }
+
+        //    public new INavigationParameters NavigationParameters { get; }
+
+        //    public new string Path { get; }
+        //}
 
         Task<INavigationResult> INavigationService.NavigateAsync(string name)
         {
