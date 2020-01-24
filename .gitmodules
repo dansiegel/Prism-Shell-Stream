@@ -2,3 +2,7 @@
 	path = Prism
 	url = https://github.com/PrismLibrary/Prism.git
 	branch = shell
+[submodule "Xamarin.Forms"]
+	path = Xamarin.Forms
+	url = https://github.com/xamarin/Xamarin.Forms.git
+	branch = shell_mvvm
