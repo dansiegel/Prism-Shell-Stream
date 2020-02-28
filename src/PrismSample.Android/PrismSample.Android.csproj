@@ -112,9 +112,9 @@
     <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android.csproj">
       <Name>Xamarin.Forms.Platform.Android</Name>
     </ProjectReference>
-    <!-- <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
+    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
       <Name>Xamarin.Forms.Core</Name>
-    </ProjectReference> -->
+    </ProjectReference>
     <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj">
       <Name>Xamarin.Forms.Xaml</Name>
     </ProjectReference>
@@ -131,4 +131,5 @@
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
