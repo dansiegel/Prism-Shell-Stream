@@ -23,7 +23,7 @@ namespace PrismSample
                 //var result = await NavigationService.NavigateAsync("HomePage");
                 try
                 {
-                    var result = await UseShellNavigation<MainShell>().NavigateAsync("HomePage");
+                    var result = await UseShellNavigation<MainShell>().NavigateAsync("TabA?message=Hello%20from%App");
 
                     if (!result.Success)
                     {
