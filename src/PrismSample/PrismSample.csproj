@@ -5,32 +5,17 @@
     <XFDisableTargetsValidation>True</XFDisableTargetsValidation>
     <DebugType>portable</DebugType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Views\HomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Views\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
+  <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.DefaultItems.props" />
+  <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.DefaultItems.targets" />
 
   <ItemGroup>
     <ProjectReference ReferenceOutputAssembly="False" Include="$(XFRootCodePath)\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
+    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
     <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />
+    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
   </ItemGroup>
-
-  <Target Name="EnsureBuildTasks" BeforeTargets="BeforeCompile" >
-    <Message Text="EnsureBuildTasks is running" />
-    <MSBuild Projects="$(XFRootCodePath)\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj"
-      Properties="Configuration=$(Configuration)"/>
-  </Target>
 
   <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
   <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
-
 
 </Project>
