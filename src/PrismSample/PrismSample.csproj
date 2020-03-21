@@ -7,17 +7,6 @@
   </PropertyGroup>
   <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.DefaultItems.props" />
   <Import Project="$(XFRootCodePath)\.nuspec\Xamarin.Forms.DefaultItems.targets" />
-  <ItemGroup>
-    <EmbeddedResource Update="Views\HomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Views\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference ReferenceOutputAssembly="False" Include="$(XFRootCodePath)\Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj" />
