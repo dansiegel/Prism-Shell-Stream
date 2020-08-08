@@ -1,10 +1,16 @@
 <Project>
   <Import Project="..\BuildFromSource.props" />
-  <ItemGroup>
+  <!--<ItemGroup>
     <ProjectReference ExcludeAssets="All"  Include="$(PrismRootCodePath)\Prism\Prism.csproj" />
     <ProjectReference ExcludeAssets="All"  Include="$(PrismRootCodePath)\Xamarin\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj" />
     <ProjectReference ExcludeAssets="All" Include="$(PrismRootCodePath)\Xamarin\Prism.Forms\Prism.Forms.csproj" />
-  </ItemGroup>
+  </ItemGroup>-->
 
+    
+  <!--<PropertyGroup>
+    <FromSource>true</FromSource>
+    <SampleProject>true</SampleProject>
+  </PropertyGroup>
+  <Import Project="..\Xamarin.Forms\SampleImports\Directory.Build.props" />-->
 
 </Project>

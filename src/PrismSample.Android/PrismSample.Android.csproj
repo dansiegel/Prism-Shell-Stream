@@ -99,33 +99,26 @@
       <Project>{af24cbdd-912c-4c54-a91a-07c40fa0b6d3}</Project>
       <Name>Prism.Forms</Name>
     </ProjectReference> -->
+    <PackageReference Include="Xamarin.Forms">
+      <Version>4.8.0.1269</Version>
+    </PackageReference>
+    <ProjectReference Include="..\..\Prism\src\Forms\Prism.DryIoc.Forms\Prism.DryIoc.Forms.csproj">
+      <Project>{49916861-f489-45eb-b6c1-a54a72e9a8ef}</Project>
+      <Name>Prism.DryIoc.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Prism\src\Forms\Prism.Forms\Prism.Forms.csproj">
+      <Project>{c0ed5eb1-eb2c-4863-a806-01464e70b94f}</Project>
+      <Name>Prism.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Prism\src\Prism.Core\Prism.Core.csproj">
+      <Project>{36f336aa-6bc8-49fb-8ded-bfeb787f580a}</Project>
+      <Name>Prism.Core</Name>
+    </ProjectReference>
     <ProjectReference ExcludeAssets="All" Include="..\PrismSample\PrismSample.csproj">
       <Project>{5767A715-87A6-4303-9D79-D9E43EAF262E}</Project>
       <Name>PrismSample</Name>
     </ProjectReference>
-    <ProjectReference Include="$(XFRootCodePath)\Stubs\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android %28Forwarders%29.csproj">
-      <Name>Xamarin.Forms.Platform.Android %28Forwarders%29</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Platform.Android.FormsViewGroup\Xamarin.Forms.Platform.Android.FormsViewGroup.csproj">
-      <Name>Xamarin.Forms.Platform.Android.FormsViewGroup</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android.csproj">
-      <Name>Xamarin.Forms.Platform.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
-      <Name>Xamarin.Forms.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(XFRootCodePath)\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj">
-      <Name>Xamarin.Forms.Xaml</Name>
-    </ProjectReference>
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
-    <PackageReference Include="DryIoc.dll" Version="4.0.7" />
+    <PackageReference Include="DryIoc.dll" Version="4.1.4" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />

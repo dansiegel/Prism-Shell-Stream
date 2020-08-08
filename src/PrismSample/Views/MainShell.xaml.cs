@@ -11,7 +11,14 @@ namespace PrismSample.Views
         public MainShell(/*INavigationService navigationService*/)
         {
             //SetNavigationService(navigationService);
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch(System.Exception e)
+            {
+
+            }
         }
     }
 }

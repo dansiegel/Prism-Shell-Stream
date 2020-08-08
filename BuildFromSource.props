@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
     <XFRootCodePath>$(MSBuildThisFileDirectory)Xamarin.Forms</XFRootCodePath>
-    <PrismRootCodePath>$(MSBuildThisFileDirectory)Prism\Source</PrismRootCodePath>
+    <PrismRootCodePath>$(MSBuildThisFileDirectory)Prism\src</PrismRootCodePath>
   </PropertyGroup>
 </Project>
