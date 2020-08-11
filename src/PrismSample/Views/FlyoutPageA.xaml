@@ -8,6 +8,7 @@
              x:Class="PrismSample.Views.FlyoutPageA">
   <StackLayout HorizontalOptions="Center"
                VerticalOptions="Center">
+    <Label Text="Flout Page A" />
     <Label Text="{Binding LabelText}" />
     <Label Text="{Binding Message, StringFormat='Message: {0}'}" />
     <Label Text="{Binding Initialized, StringFormat='Initialized: {0}'}" />

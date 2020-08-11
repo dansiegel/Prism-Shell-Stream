@@ -7,6 +7,7 @@
              x:Class="PrismSample.Views.HomePage">
   <StackLayout HorizontalOptions="Center"
                VerticalOptions="Center">
+    <Label Text="Home Page" />
     <Label Text="{Binding LabelText}" />
     <Label Text="{Binding Message, StringFormat='Message: {0}'}" />
     <Label Text="{Binding Initialized, StringFormat='Initialized: {0}'}" />

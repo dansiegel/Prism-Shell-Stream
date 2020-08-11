@@ -8,6 +8,7 @@
              x:Class="PrismSample.Views.ViewB">
   <StackLayout HorizontalOptions="Center"
                VerticalOptions="Center">
+    <Label Text="View B" />
     <Label Text="{Binding LabelText}" />
     <Label Text="{Binding Message, StringFormat='Message: {0}'}" />
     <Label Text="{Binding Initialized, StringFormat='Initialized: {0}'}" />

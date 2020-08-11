@@ -31,15 +31,15 @@
     navPage.Push(new Root());
     navPage.Push(new Root2());
     -->
-    <FlyoutItem>
-        <Tab>
-            <ShellContent Route="TabA" />
-            <ShellContent Route="TabB" />
+    <FlyoutItem Title="Main">
+        <Tab Title="Tab 1">
+            <ShellContent Route="TabA" Title="Tab A" />
+            <ShellContent Route="TabB" Title="Tab B" />
         </Tab>
-        <Tab>
-            <ShellContent Route="ViewA" />
-            <ShellContent Route="ViewB" />
-            <ShellContent Route="ViewC" />
+        <Tab Title="Tab 2">
+            <ShellContent Route="ViewA" Title="ViewA" />
+            <ShellContent Route="ViewB" Title="ViewB" />
+            <ShellContent Route="ViewC" Title="ViewC" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Flyout A">
