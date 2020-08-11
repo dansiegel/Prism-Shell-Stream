@@ -31,7 +31,7 @@
     navPage.Push(new Root());
     navPage.Push(new Root2());
     -->
-    <TabBar>
+    <FlyoutItem>
         <Tab>
             <ShellContent Route="TabA" />
             <ShellContent Route="TabB" />
@@ -41,7 +41,7 @@
             <ShellContent Route="ViewB" />
             <ShellContent Route="ViewC" />
         </Tab>
-    </TabBar>
+    </FlyoutItem>
     <FlyoutItem Title="Flyout A">
         <ShellContent Route="FlyoutPageA" />
     </FlyoutItem>
